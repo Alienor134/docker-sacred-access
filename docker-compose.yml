@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # JupyterLab service for testing the workshop image
+  jupyterlab:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - GRANT_SUDO=yes
+      - NB_UID=1000
+      - NB_GID=100
+      - CHOWN_HOME=yes
+      - CHOWN_HOME_OPTS=-R
+    user: root
+    working_dir: /home/jovyan
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
+    restart: unless-stopped

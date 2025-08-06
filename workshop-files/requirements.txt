@@ -1,0 +1,30 @@
+# Core data science packages
+matplotlib>=3.7.0
+pandas>=2.0.0
+numpy>=1.24.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Interactive data visualization
+pygwalker>=0.3.0
+
+# Database connectivity
+pymongo>=4.5.0
+
+# Sacred experiment tracking
+sacred>=0.8.4
+
+# IMPORTANT: incense (Sacred experiment browser) - MOST IMPORTANT PACKAGE!
+# Using Alienor's fork with compatibility fixes
+git+https://github.com/Alienor134/incense.git
+
+# Alternative to incense - use sacred directly with omniboard for visualization
+# Omniboard is a web-based dashboard for Sacred experiments
+# Install it separately or use the Docker version you already have running
+
+# Additional useful packages for data workshops
+scikit-learn>=1.3.0
+ipywidgets>=8.0.0
+
+# Add packages that work well with Sacred for experiment tracking
+tinydb>=4.7.0
