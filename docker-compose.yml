@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # JupyterLab service for testing the workshop image
+  jupyterlab:
+    build: .
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+      - GRANT_SUDO=yes
+      - NB_UID=1000
+      - NB_GID=100
+      - CHOWN_HOME=yes
+      - CHOWN_HOME_OPTS=-R
+      - HOST_IP=${HOST_IP:-0.0.0.0}
+      - DEBUG_HOST_IP=${HOST_IP}
+    user: root
+    working_dir: /home/jovyan
+    command: >
+      bash -c "
+      echo 'HOST_IP environment variable:' $$HOST_IP;
+      echo 'DEBUG_HOST_IP environment variable:' $$DEBUG_HOST_IP;
+      printenv | grep HOST;
+      start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
+      "
+    restart: unless-stopped
